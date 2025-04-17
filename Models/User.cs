@@ -6,15 +6,15 @@ namespace gacha.Models
     public class User
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
 
-        public string Linktr { get; set; } = string.Empty;
+        public string? Linktr { get; set; }
 
-        public int Spins { get; set; } = 0;
+        public int? Spins { get; set; } = 0;
 
-        public bool Banned { get; set; } = false;
+        public bool? Banned { get; set; } = false;
 
-        public int Coins { get; set; } = 0;
+        public int? Coins { get; set; } = 0;
 
         public ICollection<Collection> Collection { get; set; } = new List<Collection>();
     }

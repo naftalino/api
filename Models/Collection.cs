@@ -6,7 +6,7 @@ namespace gacha.Models
     public class Collection
     {
         [Key]
-        public int UserId { get; set; }
+        public long UserId { get; set; }
 
         public int CardId { get; set; }
 

@@ -37,9 +37,9 @@ namespace Gacha.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody] CreateUserDto newUser)
+        public IActionResult CreateUser([FromBody] CreateUserDto user)
         {
-            var created = _service.Create(newUser);
+            var created = _service.Create(user);
             return Created($"/user/{created.Id}", created);
         }
 
