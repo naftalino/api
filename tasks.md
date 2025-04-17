@@ -1,0 +1,1 @@
+1. averiguar a questão da atualização das séries, porque, quando faz a request put para atualizar os dados da série, na verdade o valor padrão dos campos não passados são atualizados. Ou seja, é atualizado somente o que é passado na request e o resto fica em branco.

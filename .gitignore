@@ -1,0 +1,79 @@
+## Compilação
+bin/
+obj/
+out/
+*.exe
+*.dll
+*.pdb
+*.app
+*.so
+*.dylib
+
+## Publicação
+publish/
+*.db
+*.db-shm
+*.db-wal
+
+## VS Code
+.vscode/
+*.code-workspace
+
+## Rider
+.idea/
+
+## Arquivos temporários
+*.tmp
+*.log
+*.vspscc
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Configurações locais
+Properties/launchSettings.json
+appsettings.Development.json
+secrets.json
+
+## Pacotes
+*.nupkg
+packages/
+.nuget/
+project.lock.json
+project.fragment.lock.json
+
+## Cache
+*.cache
+*.pidb
+*.mdb
+
+## Sistema
+.DS_Store
+Thumbs.db
+
+## Testes
+TestResults/
+coverage/
+*.coverlet.json
+
+## Docker
+*.tar
+*.bak
+docker-compose.override.yml
+.env
+
+## dotnet tool restore
+/.tools/
+
+## Arquivos gerados por publish single file
+*.deps.json
+*.runtimeconfig.json
+*.xml
+
+## Logs
+logs/
+*.log
+
+## Outros
+_ReSharper.*
