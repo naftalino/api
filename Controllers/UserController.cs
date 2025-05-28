@@ -27,7 +27,7 @@ namespace Gacha.Controllers
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetUser(int id)
+        public IActionResult GetUser(long id)
         {
             var user = _service.Get(id);
             if (user == null)
@@ -44,7 +44,7 @@ namespace Gacha.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateUser([FromBody] User updatedUser, int id)
+        public IActionResult UpdateUser([FromBody] User updatedUser, long id)
         {
             var result = _service.Update(updatedUser, id);
             if (result == null)

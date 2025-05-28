@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace gacha.Migrations
+namespace pd.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -30,12 +30,12 @@ namespace gacha.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<long>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Linktr = table.Column<string>(type: "TEXT", nullable: false),
-                    Spins = table.Column<int>(type: "INTEGER", nullable: false),
-                    Banned = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Coins = table.Column<int>(type: "INTEGER", nullable: false)
+                    Linktr = table.Column<string>(type: "TEXT", nullable: true),
+                    Spins = table.Column<int>(type: "INTEGER", nullable: true),
+                    Banned = table.Column<bool>(type: "INTEGER", nullable: true),
+                    Coins = table.Column<int>(type: "INTEGER", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -69,7 +69,7 @@ namespace gacha.Migrations
                 name: "Collections",
                 columns: table => new
                 {
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false),
+                    UserId = table.Column<long>(type: "INTEGER", nullable: false),
                     CardId = table.Column<int>(type: "INTEGER", nullable: false),
                     Quantity = table.Column<int>(type: "INTEGER", nullable: false)
                 },
@@ -94,12 +94,6 @@ namespace gacha.Migrations
                 name: "IX_Cards_SerieId",
                 table: "Cards",
                 column: "SerieId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Cards_ThumbUrl",
-                table: "Cards",
-                column: "ThumbUrl",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Collections_CardId",

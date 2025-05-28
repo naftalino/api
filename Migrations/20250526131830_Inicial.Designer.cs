@@ -7,17 +7,17 @@ using gacha.Database;
 
 #nullable disable
 
-namespace gacha.Migrations
+namespace pd.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250414132748_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20250526131830_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.5");
 
             modelBuilder.Entity("gacha.Models.Card", b =>
                 {
@@ -47,15 +47,12 @@ namespace gacha.Migrations
 
                     b.HasIndex("SerieId");
 
-                    b.HasIndex("ThumbUrl")
-                        .IsUnique();
-
                     b.ToTable("Cards");
                 });
 
             modelBuilder.Entity("gacha.Models.Collection", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<long>("UserId")
                         .HasColumnType("INTEGER");
 
                     b.Property<int>("CardId")
@@ -100,21 +97,20 @@ namespace gacha.Migrations
 
             modelBuilder.Entity("gacha.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Banned")
+                    b.Property<bool?>("Banned")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Coins")
+                    b.Property<int?>("Coins")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Linktr")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("Spins")
+                    b.Property<int?>("Spins")
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");

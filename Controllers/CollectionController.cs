@@ -16,7 +16,7 @@ public class CollectionController : ControllerBase
     }
 
     [HttpGet("{userId}")]
-    public async Task<ActionResult<PaginatedCollectionDto>> Get(int userId, int page = 1, int pageSize = 10)
+    public async Task<ActionResult<PaginatedCollectionDto>> Get(long userId, int page = 1, int pageSize = 10)
     {
         try
         {

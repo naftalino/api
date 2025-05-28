@@ -30,7 +30,6 @@ namespace gacha.Services
                 })
                 .ToList();
         }
-
         public CardDto? GetById(int id)
         {
             var card = _db.Cards.Include(c => c.Serie).FirstOrDefault(c => c.Id == id);

@@ -29,7 +29,7 @@ public class PaginatedResultDto<T>
 
 public class CreateCollectionDto
 {
-    public int UserId { get; set; }
+    public long UserId { get; set; }
     public int CardId { get; set; }
     public int Quantity { get; set; } = 1;
 }

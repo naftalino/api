@@ -6,7 +6,7 @@ using gacha.Database;
 
 #nullable disable
 
-namespace gacha.Migrations
+namespace pd.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -14,7 +14,7 @@ namespace gacha.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.4");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.5");
 
             modelBuilder.Entity("gacha.Models.Card", b =>
                 {

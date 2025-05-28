@@ -15,7 +15,7 @@ public class CollectionService
         _context = context;
     }
 
-    public async Task<PaginatedCollectionDto> GetByUserIdAsync(int userId, int page = 1, int pageSize = 10)
+    public async Task<PaginatedCollectionDto> GetByUserIdAsync(long userId, int page = 1, int pageSize = 10)
     {
         var userExists = await _context.Users.AnyAsync(u => u.Id == userId);
         if (!userExists)

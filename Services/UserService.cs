@@ -13,7 +13,7 @@ namespace gacha.Services
             _db = db;
         }
 
-        public User? Get(int id) => _db.Users.Find(id);
+        public User? Get(long id) => _db.Users.Find(id);
 
         public List<User> GetAll() => _db.Users.ToList();
 
@@ -43,7 +43,7 @@ namespace gacha.Services
             return true;
         }
 
-        public User? Update(User updated, int id)
+        public User? Update(User updated, long id)
         {
             var user = _db.Users.Find(id);
             Console.WriteLine(user);
