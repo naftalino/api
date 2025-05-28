@@ -54,7 +54,7 @@ namespace Gacha.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult DeleteUser(int id)
+        public IActionResult DeleteUser(long id)
         {
             var deleted = _service.Delete(id);
             if (!deleted)

@@ -33,7 +33,7 @@ namespace gacha.Services
             return newUser;
         }
 
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             var user = _db.Users.Find(id);
             if (user == null) return false;
