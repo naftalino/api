@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\dev\\pd\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\gachaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\gachaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\collectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\collectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CollectionService.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Services\\CollectionService.cs",
+              "RelativeDocumentMoniker": "Services\\CollectionService.cs",
+              "ToolTip": "C:\\dev\\pd\\Services\\CollectionService.cs",
+              "RelativeToolTip": "Services\\CollectionService.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAAywCgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T20:49:52.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "GachaService.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Services\\GachaService.cs",
+              "RelativeDocumentMoniker": "Services\\GachaService.cs",
+              "ToolTip": "C:\\dev\\pd\\Services\\GachaService.cs",
+              "RelativeToolTip": "Services\\GachaService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-20T20:49:50.669Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

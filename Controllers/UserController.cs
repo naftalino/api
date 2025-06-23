@@ -44,7 +44,7 @@ namespace Gacha.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult UpdateUser([FromBody] User updatedUser, long id)
+        public IActionResult UpdateUser([FromBody] UpdateUserDto updatedUser, long id)
         {
             var result = _service.Update(updatedUser, id);
             if (result == null)

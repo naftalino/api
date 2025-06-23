@@ -14,22 +14,22 @@ namespace gacha.Services
             _db = db;
         }
 
-        public List<GetAllDto> GetAll()
+        public IQueryable<GetAllDto> GetAll()
         {
             return _db.Cards
                 .Include(c => c.Serie)
-                .Select(c => new GetAllDto
+                .Select(x => new GetAllDto
                 {
-                    Id = c.Id,
-                    Name = c.Name,
-                    ThumbUrl = c.ThumbUrl,
-                    Rarity = c.Rarity,
-                    Value = c.Value,
-                    SerieId = c.SerieId,
-                    SerieName = c.Serie.Name
-                })
-                .ToList();
+                    Id = x.Id,
+                    Name = x.Name,
+                    SerieName = x.Serie.Name,
+                    SerieId = x.SerieId,
+                    ThumbUrl = x.ThumbUrl,
+                    Value = x.Value,
+                    Rarity = x.Rarity
+                });
         }
+
         public CardDto? GetById(int id)
         {
             var card = _db.Cards.Include(c => c.Serie).FirstOrDefault(c => c.Id == id);

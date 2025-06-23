@@ -1,94 +1,189 @@
-<!-- index.html -->
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cadastrar Carta</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vue Dashboard</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://unpkg.com/vue-router@4"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
+
 <body>
-  <div id="app" class="container py-5">
-    <h1 class="mb-4">Cadastrar Carta</h1>
-    <form @submit.prevent="submitCard">
-      <div class="mb-3">
-        <label class="form-label">Nome</label>
-        <input type="text" v-model="card.name" class="form-control" required>
-      </div>
+  <div id="app"></div>
 
-      <div class="mb-3">
-        <label class="form-label">Thumb URL</label>
-        <input type="url" v-model="card.thumbUrl" class="form-control">
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">Raridade</label>
-        <select v-model="card.rarity" class="form-select">
-          <option value="common">Comum</option>
-          <option value="rare">Rara</option>
-          <option value="epic">Épica</option>
-          <option value="legendary">Lendária</option>
-        </select>
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">Valor</label>
-        <input type="number" v-model.number="card.value" class="form-control" min="1">
-      </div>
-
-      <div class="mb-3">
-        <label class="form-label">Série</label>
-        <select v-model="card.serieId" class="form-select" required>
-          <option disabled value="">Selecione uma série</option>
-          <option v-for="serie in series" :key="serie.id" :value="serie.id">
-            {{ serie.name }}
-          </option>
-        </select>
-      </div>
-
-      <button type="submit" class="btn btn-primary">Salvar</button>
-    </form>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/vue@3.4.21/dist/vue.global.prod.js"></script>
   <script>
-    const { createApp } = Vue
-
-    createApp({
+    const Dashboard = {
+      template: `
+        <div class="flex h-screen">
+          <aside class="w-64 bg-gray-800 text-white flex flex-col">
+            <div class="p-4 text-xl font-bold border-b border-gray-700">Dashboard</div>
+            <nav class="flex-1 overflow-y-auto">
+              <ul>
+                <li v-for="item in menu" :key="item.title" class="border-b border-gray-700">
+                  <button @click="toggle(item)" class="w-full text-left px-4 py-2 hover:bg-gray-700">
+                    {{ item.title }}
+                  </button>
+                  <ul v-if="item.open" class="bg-gray-700">
+                    <li v-for="sub in item.children" :key="sub.label">
+                      <router-link :to="sub.route" class="block px-6 py-2 hover:bg-gray-600">
+                        {{ sub.label }}
+                      </router-link>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </nav>
+          </aside>
+          <main class="flex-1 bg-gray-100 p-6 overflow-y-auto">
+            <router-view />
+          </main>
+        </div>
+      `,
       data() {
         return {
-          card: {
-            name: '',
-            thumbUrl: 'https://placehold.co/450x700/png',
-            rarity: 'common',
-            value: 100,
-            serieId: 1
-          },
-          series: [1, 2, 3, 4]
-        }
-      },    
-      mounted() {
-        // Chamar API para buscar as séries
-        fetch('http://localhost:5072/cards') // Substituir pelo seu endpoint real
-          .then(res => res.json())
-          .then(data => this.series = data)
+          menu: [
+            {
+              title: "Cards",
+              open: false,
+              children: [
+                { label: "Criar", route: "/cards/create" },
+                { label: "Editar", route: "/cards/edit" },
+                { label: "Deletar", route: "/cards/delete" },
+                { label: "Listar", route: "/cards" },
+              ],
+            },
+            {
+              title: "Séries",
+              open: false,
+              children: [
+                { label: "Criar", route: "/series/create" },
+                { label: "Editar", route: "/series/edit" },
+                { label: "Deletar", route: "/series/delete" },
+                { label: "Listar", route: "/series" },
+              ],
+            },
+          ],
+        };
       },
       methods: {
-        submitCard() {
-          // Submeter o card via POST
+        toggle(item) {
+          item.open = !item.open;
+        },
+      },
+    };
+
+    const CardCreate = {
+      template: `
+      <div class="max-w-xl mx-auto bg-white p-6 rounded shadow">
+        <h2 class="text-2xl font-bold mb-4">Criar Nova Carta</h2>
+        <form @submit.prevent="submit">
+          <div class="mb-4">
+            <label class="block mb-1 font-medium">Nome</label>
+            <input v-model="form.name" type="text" class="w-full border rounded px-3 py-2" required>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 font-medium">Descrição</label>
+            <textarea v-model="form.value" class="w-full border rounded px-3 py-2" required></textarea>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 font-medium">Série</label>
+            <select v-model="form.serieId" class="w-full border rounded px-3 py-2" required>
+              <option disabled value="">Selecione</option>
+              <option v-for="serie in series" :key="serie.id" :value="serie.id">
+                {{ serie.nome }}
+              </option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 font-medium">Raridade</label>
+            <select v-model="form.rarity" class="w-full border rounded px-3 py-2">
+              <option>Comum</option>
+              <option>Rara</option>
+              <option>Épica</option>
+              <option>Lendária</option>
+            </select>
+          </div>
+          <div class="mb-4">
+            <label class="block mb-1 font-medium">Imagem (URL)</label>
+            <input v-model="form.thumbUrl" type="url" class="w-full border rounded px-3 py-2">
+          </div>
+          <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            Salvar
+          </button>
+        </form>
+      </div>
+    `,
+      data() {
+        return {
+          form: {
+            name: '',
+            value: 0,
+            serieId: '',
+            rarity: 'Comum',
+            thumbUrl: '',
+          },
+          series: [
+            { id: 1, nome: 'Breaking Bad' },
+            { id: 2, nome: 'Sei la' },
+          ],
+        };
+      },
+      methods: {
+        submit() {
           fetch('http://localhost:5072/card', {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(this.card)
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(this.form),
           })
-          .then(res => {
-            if (!res.ok) throw new Error("Erro ao salvar");
-            alert("Carta cadastrada com sucesso!");
-          })
-          .catch(err => alert(err.message));
-        }
-      }
-    }).mount('#app')
+            .then(async (res) => {
+              if (!res.ok) {
+                const error = await res.text();
+                throw new Error(error || 'Erro ao criar carta');
+              }
+              return res.json();
+            })
+            .then(data => {
+              alert('Carta criada com sucesso!');
+              console.log('Resposta da API:', data);
+              this.form = {
+                name: '',
+                descricao: '',
+                serieId: '',
+                raridade: 'Comum',
+                imagem: '',
+              };
+            })
+            .catch(err => {
+              alert('Erro: ' + err.message);
+              console.error(err);
+            });
+        },
+      },
+    };
+    const routes = [
+      { path: '/cards/create', component: CardCreate },
+      { path: '/cards/edit', component: { template: '<div>Editar Card</div>' } },
+      { path: '/cards/delete', component: { template: '<div>Deletar Card</div>' } },
+      { path: '/cards', component: { template: '<div>Listar Cards</div>' } },
+      { path: '/series/create', component: { template: '<div>Criar Série</div>' } },
+      { path: '/series/edit', component: { template: '<div>Editar Série</div>' } },
+      { path: '/series/delete', component: { template: '<div>Deletar Série</div>' } },
+      { path: '/series', component: { template: '<div>Listar Séries</div>' } },
+    ];
+
+    const router = VueRouter.createRouter({
+      history: VueRouter.createWebHashHistory(),
+      routes,
+    });
+
+    const app = Vue.createApp(Dashboard);
+    app.use(router);
+    app.mount('#app');
   </script>
 </body>
+
 </html>

@@ -43,16 +43,23 @@ namespace gacha.Services
             return true;
         }
 
-        public User? Update(User updated, long id)
+        public User? Update(UpdateUserDto updated, long id)
         {
             var user = _db.Users.Find(id);
-            Console.WriteLine(user);
             if (user == null) return null;
 
-            user.Linktr = updated.Linktr;
-            user.Spins = updated.Spins;
-            user.Banned = updated.Banned;
-            user.Coins = updated.Coins;
+            // os campos serao atualizados somente se passados no corpo de req.
+            if (!string.IsNullOrWhiteSpace(updated.Linktr))
+                user.Linktr = updated.Linktr;
+
+            if (updated.Spins.HasValue)
+                user.Spins += updated.Spins;
+
+            if (updated.Banned.HasValue)
+                user.Banned = updated.Banned;
+
+            if (updated.Coins.HasValue)
+                user.Coins += updated.Coins;
 
             _db.SaveChanges();
             return user;
