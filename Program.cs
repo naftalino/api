@@ -4,6 +4,7 @@ using pd.Services;
 using System.Text.Json;
 
 // TODO: arrumar o retorno de /api/series/subgenre com os DTOs.
+// Terminar amanha
 
 var builder = WebApplication.CreateBuilder(args);
 
