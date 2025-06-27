@@ -1,3 +1,6 @@
+using gacha.Models;
+using pd.Models;
+
 namespace gacha.Dto
 {
     public class SerieBasicDto
@@ -69,4 +72,6 @@ namespace gacha.Dto
         public int TotalCards { get; set; }
     }
 
+    public record CardsDto(int Id, string Name, SerieInfoDto Serie);
+    public record SerieInfoDto(string Name);
 }

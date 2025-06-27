@@ -46,7 +46,6 @@ namespace gacha.Services
                 {
                     Id = card.Serie.Id,
                     Name = card.Serie.Name,
-                    Genre = card.Serie.Genre,
                     ThumbUrl = card.Serie.ThumbUrl
                 }
             };
@@ -79,7 +78,6 @@ namespace gacha.Services
                 {
                     Id = serie.Id,
                     Name = serie.Name,
-                    Genre = serie.Genre,
                     ThumbUrl = serie.ThumbUrl
                 }
             };
@@ -114,7 +112,6 @@ namespace gacha.Services
                 {
                     Id = card.Serie.Id,
                     Name = card.Serie.Name,
-                    Genre = card.Serie.Genre,
                     ThumbUrl = card.Serie.ThumbUrl
                 }
             };

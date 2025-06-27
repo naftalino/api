@@ -54,7 +54,6 @@ public class CollectionService
                 {
                     Id = collection.Card.Serie.Id,
                     Name = collection.Card.Serie.Name,
-                    Genre = collection.Card.Serie.Genre,
                     ThumbUrl = collection.Card.Serie.ThumbUrl
                 }
             }
@@ -131,7 +130,6 @@ public class CollectionService
                 {
                     Id = card.Serie.Id,
                     Name = card.Serie.Name,
-                    Genre = card.Serie.Genre,
                     ThumbUrl = card.Serie.ThumbUrl
                 }
             }

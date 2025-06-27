@@ -3,6 +3,8 @@ using gacha.Services;
 using pd.Services;
 using System.Text.Json;
 
+// TODO: arrumar o retorno de /api/series/subgenre com os DTOs.
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
@@ -14,7 +16,10 @@ builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<SerieService>();
 builder.Services.AddScoped<CardService>();
 builder.Services.AddScoped<CollectionService>();
-builder.Services.AddScoped<GachaService>();
+builder.Services.AddScoped<GenreService>();
+builder.Services.AddScoped<SubgenreService>();
+builder.Services.AddScoped<SerieService>();
+builder.Services.AddScoped<GachaDrawService>();
 
 builder.Services.AddCors(options =>
 {
@@ -23,6 +28,14 @@ builder.Services.AddCors(options =>
         policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
     });
 });
+
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(opt =>
+    {
+        opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+    });
+
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {

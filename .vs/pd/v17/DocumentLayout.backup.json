@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\dev\\pd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\gachaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\gachaservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\controllers\\drawcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:controllers\\drawcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\collectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\collectionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\gachadrawservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\gachadrawservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\dto\\carddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:dto\\carddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\serieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\serieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,28 +30,53 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CollectionService.cs",
-              "DocumentMoniker": "C:\\dev\\pd\\Services\\CollectionService.cs",
-              "RelativeDocumentMoniker": "Services\\CollectionService.cs",
-              "ToolTip": "C:\\dev\\pd\\Services\\CollectionService.cs",
-              "RelativeToolTip": "Services\\CollectionService.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAywCgAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "CardDto.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Dto\\CardDto.cs",
+              "RelativeDocumentMoniker": "Dto\\CardDto.cs",
+              "ToolTip": "C:\\dev\\pd\\Dto\\CardDto.cs",
+              "RelativeToolTip": "Dto\\CardDto.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAIA2wE0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T20:49:52.77Z"
+              "WhenOpened": "2025-06-27T01:05:18.006Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GachaService.cs",
-              "DocumentMoniker": "C:\\dev\\pd\\Services\\GachaService.cs",
-              "RelativeDocumentMoniker": "Services\\GachaService.cs",
-              "ToolTip": "C:\\dev\\pd\\Services\\GachaService.cs",
-              "RelativeToolTip": "Services\\GachaService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwBoAAAAiAAAAAAAAAA==",
+              "Title": "DrawController.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Controllers\\DrawController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DrawController.cs",
+              "ToolTip": "C:\\dev\\pd\\Controllers\\DrawController.cs",
+              "RelativeToolTip": "Controllers\\DrawController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAwwC0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-20T20:49:50.669Z",
+              "WhenOpened": "2025-06-27T01:00:50.503Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GachaDrawService.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Services\\GachaDrawService.cs",
+              "RelativeDocumentMoniker": "Services\\GachaDrawService.cs",
+              "ToolTip": "C:\\dev\\pd\\Services\\GachaDrawService.cs",
+              "RelativeToolTip": "Services\\GachaDrawService.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAtwEcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T17:46:09.427Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SerieService.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Services\\SerieService.cs",
+              "RelativeDocumentMoniker": "Services\\SerieService.cs",
+              "ToolTip": "C:\\dev\\pd\\Services\\SerieService.cs",
+              "RelativeToolTip": "Services\\SerieService.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAiwAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T17:45:33.323Z"
             }
           ]
         }

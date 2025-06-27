@@ -6,42 +6,45 @@ using Microsoft.AspNetCore.Mvc;
 namespace Gacha.Controllers
 {
     [ApiController]
-    [Route("serie")]
-    public class SerieController : ControllerBase
+    [Route("api/series")]
+    public class SeriesController : ControllerBase
     {
-        private readonly SerieService _service;
+        private readonly SerieService _serieService;
 
-        public SerieController(SerieService service)
+        public SeriesController(SerieService serieService)
         {
-            _service = service;
+            _serieService = serieService;
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Get(int id) =>
-            _service.Get(id) is { } serie ? Ok(serie) : NotFound(new { error = "Série não encontrada." });
-
-        [HttpGet("cards/{id}")]
-        public IActionResult GetById(int id, [FromQuery] int page = 1, [FromQuery] int pageSize = 10) =>
-    _service.GetByIdPaged(id, page, pageSize) is { } result
-        ? Ok(result)
-        : NotFound(new { error = "Série não encontrada." });
-
-        [HttpGet]
-        public IActionResult GetAll(int page = 1, int pageSize = 10)
+        [HttpPost("genre")]
+        public IActionResult CreateSerieWithGenre([FromBody] SerieGenreDto dto)
         {
-            var result = _service.GetAll(page, pageSize);
-            return Ok(result);
+            var serie = _serieService.CreateSerieWithGenre(dto.Name, dto.Description, dto.ThumbUrl, dto.GenreId);
+            return Ok(serie);
         }
 
-        [HttpPost]
-        public IActionResult Create([FromBody] CreateSerieDto s) => Ok(_service.Create(s));
+        [HttpPost("subgenre")]
+        public IActionResult CreateSerieWithSubgenre([FromBody] SerieSubgenreDto dto)
+        {
+            var serie = _serieService.CreateSerieWithSubgenre(dto.Name, dto.Description, dto.ThumbUrl, dto.SubgenreId);
+            return Ok(serie);
+        }
 
-        [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody] SerieDto s) =>
-            _service.Update(id, s) is { } updated ? Ok(updated) : NotFound(new { error = "Série não encontrada." });
+        public class SerieGenreDto
+        {
+            public string Name { get; set; } = "";
+            public string Description { get; set; } = "";
+            public string ThumbUrl { get; set; } = "";
+            public int GenreId { get; set; }
+        }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(int id) =>
-            _service.Delete(id) ? Ok() : NotFound(new { error = "Série não encontrada." });
+        public class SerieSubgenreDto
+        {
+            public string Name { get; set; } = "";
+            public string Description { get; set; } = "";
+            public string ThumbUrl { get; set; } = "";
+            public int SubgenreId { get; set; }
+        }
     }
+
 }

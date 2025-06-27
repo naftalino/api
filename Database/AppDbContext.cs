@@ -1,5 +1,6 @@
 using gacha.Models;
 using Microsoft.EntityFrameworkCore;
+using pd.Models;
 
 namespace gacha.Database
 {
@@ -9,6 +10,8 @@ namespace gacha.Database
         public DbSet<Serie> Series { get; set; }
         public DbSet<Card> Cards { get; set; }
         public DbSet<Collection> Collections { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Subgenre> Subgenres { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
