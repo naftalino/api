@@ -23,6 +23,34 @@ namespace gacha.Database
 
             modelBuilder.Entity<Collection>()
                 .HasKey(c => new { c.UserId, c.CardId });
+
+            // Genre -> Subgenre
+            modelBuilder.Entity<Subgenre>()
+                .HasOne(sg => sg.Genre)
+                .WithMany(g => g.Subgenres)
+                .HasForeignKey(sg => sg.GenreId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Genre -> Series
+            modelBuilder.Entity<Serie>()
+                .HasOne(s => s.Genre)
+                .WithMany(g => g.Series)
+                .HasForeignKey(s => s.GenreId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Subgenre -> Series
+            modelBuilder.Entity<Serie>()
+                .HasOne(s => s.SubGenre)
+                .WithMany(sg => sg.Series)
+                .HasForeignKey(s => s.SubGenreId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            // Serie -> Cards
+            modelBuilder.Entity<Card>()
+                .HasOne(c => c.Serie)
+                .WithMany(s => s.Card)
+                .HasForeignKey(c => c.SerieId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

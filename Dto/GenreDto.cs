@@ -2,6 +2,7 @@
 {
     public class GenreDto
     {
-        public record GenresDto(int Id, string Name, int Total);
+        public string Name { get; set; } = string.Empty;
+        public record GenresDto(int Id, string Name, int Total, int subgenresTotal);
     }
 }

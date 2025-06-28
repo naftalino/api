@@ -3,20 +3,32 @@
   "WorkspaceRootPath": "C:\\dev\\pd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\controllers\\drawcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:controllers\\drawcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\controllers\\subgenrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:controllers\\subgenrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\gachadrawservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\gachadrawservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\controllers\\genrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:controllers\\genrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\dto\\carddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:dto\\carddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\genreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\genreservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\dto\\genredto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:dto\\genredto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\controllers\\seriecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:controllers\\seriecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\services\\serieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:services\\serieservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,53 +42,95 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CardDto.cs",
-              "DocumentMoniker": "C:\\dev\\pd\\Dto\\CardDto.cs",
-              "RelativeDocumentMoniker": "Dto\\CardDto.cs",
-              "ToolTip": "C:\\dev\\pd\\Dto\\CardDto.cs",
-              "RelativeToolTip": "Dto\\CardDto.cs",
-              "ViewState": "AgIAAEIAAAAAAAAAAIA2wE0AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 4,
+              "Title": "SerieController.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Controllers\\SerieController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SerieController.cs",
+              "ToolTip": "C:\\dev\\pd\\Controllers\\SerieController.cs",
+              "RelativeToolTip": "Controllers\\SerieController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAIA2wBcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T01:05:18.006Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DrawController.cs",
-              "DocumentMoniker": "C:\\dev\\pd\\Controllers\\DrawController.cs",
-              "RelativeDocumentMoniker": "Controllers\\DrawController.cs",
-              "ToolTip": "C:\\dev\\pd\\Controllers\\DrawController.cs",
-              "RelativeToolTip": "Controllers\\DrawController.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAwwC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T01:00:50.503Z",
+              "WhenOpened": "2025-06-27T14:14:39.998Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "GachaDrawService.cs",
-              "DocumentMoniker": "C:\\dev\\pd\\Services\\GachaDrawService.cs",
-              "RelativeDocumentMoniker": "Services\\GachaDrawService.cs",
-              "ToolTip": "C:\\dev\\pd\\Services\\GachaDrawService.cs",
-              "RelativeToolTip": "Services\\GachaDrawService.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAtwEcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "SubgenresController.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Controllers\\SubgenresController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SubgenresController.cs",
+              "ToolTip": "C:\\dev\\pd\\Controllers\\SubgenresController.cs",
+              "RelativeToolTip": "Controllers\\SubgenresController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAIAywCoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T17:46:09.427Z",
+              "WhenOpened": "2025-06-28T16:44:19.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GenreService.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Services\\GenreService.cs",
+              "RelativeDocumentMoniker": "Services\\GenreService.cs",
+              "ToolTip": "C:\\dev\\pd\\Services\\GenreService.cs",
+              "RelativeToolTip": "Services\\GenreService.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAtwD4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T16:37:04.593Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "GenreDto.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Dto\\GenreDto.cs",
+              "RelativeDocumentMoniker": "Dto\\GenreDto.cs",
+              "ToolTip": "C:\\dev\\pd\\Dto\\GenreDto.cs",
+              "RelativeToolTip": "Dto\\GenreDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAABUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T16:36:35.999Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GenresController.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Controllers\\GenresController.cs",
+              "RelativeDocumentMoniker": "Controllers\\GenresController.cs",
+              "ToolTip": "C:\\dev\\pd\\Controllers\\GenresController.cs",
+              "RelativeToolTip": "Controllers\\GenresController.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAywC8AAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T16:36:16.471Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\dev\\pd\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAADwvy8AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T16:29:29.699Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "SerieService.cs",
               "DocumentMoniker": "C:\\dev\\pd\\Services\\SerieService.cs",
               "RelativeDocumentMoniker": "Services\\SerieService.cs",
               "ToolTip": "C:\\dev\\pd\\Services\\SerieService.cs",
               "RelativeToolTip": "Services\\SerieService.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAiwAQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACAAAAAAAAAAAAD4vz8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-26T17:45:33.323Z"
+              "WhenOpened": "2025-06-27T13:56:25.74Z",
+              "EditorCaption": ""
             }
           ]
         }

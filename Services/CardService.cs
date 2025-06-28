@@ -61,6 +61,7 @@ namespace gacha.Services
                 Name = dto.Name,
                 Rarity = dto.Rarity,
                 ThumbUrl = dto.ThumbUrl,
+                Value = dto.Value,
                 Serie = serie
             };
 

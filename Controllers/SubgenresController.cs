@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using gacha.Dto;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using pd.Services;
 
@@ -33,13 +34,43 @@ namespace pd.Controllers
         public IActionResult CreateSubgenre([FromBody] SubgenreDto dto)
         {
             var sub = _subgenreService.CreateSubgenre(dto.Name, dto.GenreId);
-            return Ok(sub);
+            var subDto = new {
+                Id = sub.Id,
+                Name = sub.Name,
+            };
+            return Ok(subDto);
         }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteSubgenre(int id)
+        {
+            try
+            {
+                var subgenre = _subgenreService.DeleteSubgenre(id);
+            } catch (Exception ex){
+                return NotFound(new { message = ex.Message});
+            }
+            return NoContent();
+        }
+
+        [HttpPut("{id}")]
+        public IActionResult UpdateSubgenre(int id, [FromBody] SubgenreDto dto)
+        {
+            var subgenre = _subgenreService.UpdateSubgenre(id, dto);
+            return Ok(new { message = "Subgênero atualizado com sucesso.", data = subgenre });
+        }
+
 
         public class SubgenreDto
         {
             public string Name { get; set; } = "";
             public int GenreId { get; set; }
+        }
+
+        public class ReturnSubgenreDto
+        {
+            public string Name { get; set; } = "";
+            public int SubgenreId { get; set; }
         }
     }
 
