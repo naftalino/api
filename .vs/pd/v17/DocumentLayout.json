@@ -51,8 +51,7 @@
               "ViewState": "AgIAABAAAAAAAAAAAIA2wBcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-27T14:14:39.998Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -62,7 +61,7 @@
               "RelativeDocumentMoniker": "Controllers\\SubgenresController.cs",
               "ToolTip": "C:\\dev\\pd\\Controllers\\SubgenresController.cs",
               "RelativeToolTip": "Controllers\\SubgenresController.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA/wCoAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAqwAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-28T16:44:19.253Z",
               "EditorCaption": ""
@@ -77,8 +76,7 @@
               "RelativeToolTip": "Services\\GenreService.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAtwD4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T16:37:04.593Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T16:37:04.593Z"
             },
             {
               "$type": "Document",
@@ -90,8 +88,7 @@
               "RelativeToolTip": "Dto\\GenreDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAUAAABUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T16:36:35.999Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T16:36:35.999Z"
             },
             {
               "$type": "Document",
@@ -103,8 +100,7 @@
               "RelativeToolTip": "Controllers\\GenresController.cs",
               "ViewState": "AgIAACUAAAAAAAAAAAAywC8AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T16:36:16.471Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T16:36:16.471Z"
             },
             {
               "$type": "Document",
@@ -116,8 +112,7 @@
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAACEAAAAAAAAAAADwvy8AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T16:29:29.699Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-28T16:29:29.699Z"
             },
             {
               "$type": "Document",
@@ -129,8 +124,7 @@
               "RelativeToolTip": "Services\\SerieService.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAD4vz8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T13:56:25.74Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-06-27T13:56:25.74Z"
             }
           ]
         }
