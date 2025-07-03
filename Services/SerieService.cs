@@ -106,7 +106,11 @@ namespace gacha.Services
             if (serie == null)
                 throw new KeyNotFoundException("Série não encontrada.");
 
-            serie.Name = dto.Name;
+            if(dto.Name != "")
+            {
+                serie.Name = dto.Name;
+            }
+            
             if(dto.ThumbUrl != "")
                 serie.ThumbUrl = dto.ThumbUrl;
 

@@ -53,13 +53,13 @@ namespace gacha.Services
                 user.Linktr = updated.Linktr;
 
             if (updated.Spins.HasValue)
-                user.Spins += updated.Spins;
+                user.Spins = updated.Spins;
 
             if (updated.Banned.HasValue)
                 user.Banned = updated.Banned;
 
             if (updated.Coins.HasValue)
-                user.Coins += updated.Coins;
+                user.Coins = updated.Coins;
 
             _db.SaveChanges();
             return user;
