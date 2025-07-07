@@ -23,15 +23,14 @@ namespace Gacha.Controllers
 
         [HttpGet]
         public IActionResult All(
-            [FromQuery(Name = "skip")] int skip = 0,
+            [FromQuery(Name = "page")] int page = 1,
             [FromQuery(Name = "top")] int take = 10,
             [FromQuery(Name = "orderby")] string? orderBy = null)
         {
-            var data = _service.GetAll();
+            var data = _service.GetAll().AsQueryable();
             int total = data.Count();
-            int totalPages = (int)Math.Ceiling((double)total / take);
-            int currentPage = (skip / take) + 1;
 
+            // Ordenação
             if (!string.IsNullOrEmpty(orderBy))
             {
                 var parts = orderBy.Split(' ');
@@ -43,24 +42,27 @@ namespace Gacha.Controllers
                     : data.OrderBy(x => EF.Property<object>(x, field));
             }
 
-            // Calculate previous and next page numbers
-            int prevPage = currentPage - 1;
-            int nextPage = currentPage + 1;
+            // Cálculo de paginação
+            int totalPages = (int)Math.Ceiling((double)total / take);
+            page = Math.Max(1, Math.Min(page, totalPages)); // garante que a página esteja entre 1 e totalPages
+            int skip = (page - 1) * take;
 
-            if (prevPage < 1)
-                prevPage = totalPages > 0 ? totalPages : 1;
-            if (nextPage > totalPages)
-                nextPage = 1;
+            int prevPage = page > 1 ? page - 1 : 1;
+            int nextPage = page < totalPages ? page + 1 : totalPages;
+
+            var pagedData = data.Skip(skip).Take(take).ToList();
 
             return Ok(new
             {
-                data = data.Skip(skip).Take(take).ToList(),
-                currentPage,
+                data = pagedData,
+                currentPage = page,
                 nextPage,
                 prevPage,
-                totalPages
+                totalPages,
+                totalItems = total
             });
         }
+
 
         [HttpPost]
         public IActionResult Create([FromBody] CreateCardDto dto)
