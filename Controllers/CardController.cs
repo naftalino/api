@@ -22,18 +22,14 @@ namespace Gacha.Controllers
             _service.GetById(id) is { } c ? Ok(c) : NotFound(new { error = "Card não encontrado." });
 
         [HttpGet]
-        public IActionResult All(
-            [FromQuery(Name = "page")] int page = 1,
-            [FromQuery(Name = "top")] int take = 10,
-            [FromQuery(Name = "orderby")] string? orderBy = null)
+        public IActionResult All([FromQuery] int page = 1, [FromQuery] int top = 10, [FromQuery] string? orderby = null)
         {
             var data = _service.GetAll().AsQueryable();
             int total = data.Count();
 
-            // Ordenação
-            if (!string.IsNullOrEmpty(orderBy))
+            if (!string.IsNullOrEmpty(orderby))
             {
-                var parts = orderBy.Split(' ');
+                var parts = orderby.Split(' ');
                 var field = parts[0];
                 var direction = parts.Length > 1 ? parts[1] : "asc";
 
@@ -42,24 +38,17 @@ namespace Gacha.Controllers
                     : data.OrderBy(x => EF.Property<object>(x, field));
             }
 
-            // Cálculo de paginação
-            int totalPages = (int)Math.Ceiling((double)total / take);
-            page = Math.Max(1, Math.Min(page, totalPages)); // garante que a página esteja entre 1 e totalPages
-            int skip = (page - 1) * take;
+            int totalPages = (int)Math.Ceiling((double)total / top);
+            page = Math.Clamp(page, 1, totalPages);
+            int skip = (page - 1) * top;
 
-            int prevPage = page > 1 ? page - 1 : 1;
-            int nextPage = page < totalPages ? page + 1 : totalPages;
-
-            var pagedData = data.Skip(skip).Take(take).ToList();
+            var paged = data.Skip(skip).Take(top).ToList();
 
             return Ok(new
             {
-                data = pagedData,
-                currentPage = page,
-                nextPage,
-                prevPage,
-                totalPages,
-                totalItems = total
+                data = paged,
+                recordsTotal = total,
+                recordsFiltered = total
             });
         }
 
