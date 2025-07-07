@@ -23,11 +23,14 @@ namespace Gacha.Controllers
 
         [HttpGet]
         public IActionResult All(
-            [FromQuery(Name = "$skip")] int skip = 0,
-            [FromQuery(Name = "$top")] int take = 10,
-            [FromQuery(Name = "$orderby")] string? orderBy = null)
+            [FromQuery(Name = "skip")] int skip = 0,
+            [FromQuery(Name = "top")] int take = 10,
+            [FromQuery(Name = "orderby")] string? orderBy = null)
         {
             var data = _service.GetAll();
+            int total = data.Count();
+            int totalPages = (int)Math.Ceiling((double)total / take);
+            int currentPage = (skip / take) + 1;
 
             if (!string.IsNullOrEmpty(orderBy))
             {
@@ -40,13 +43,22 @@ namespace Gacha.Controllers
                     : data.OrderBy(x => EF.Property<object>(x, field));
             }
 
-            var total = data.Count();
-            var paginated = data.Skip(skip).Take(take).ToList();
+            // Calculate previous and next page numbers
+            int prevPage = currentPage - 1;
+            int nextPage = currentPage + 1;
+
+            if (prevPage < 1)
+                prevPage = totalPages > 0 ? totalPages : 1;
+            if (nextPage > totalPages)
+                nextPage = 1;
 
             return Ok(new
             {
-                result = paginated,
-                count = data.Count()
+                data = data.Skip(skip).Take(take).ToList(),
+                currentPage,
+                nextPage,
+                prevPage,
+                totalPages
             });
         }
 

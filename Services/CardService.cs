@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace gacha.Services
 {
+    // nada
     public class CardService
     {
         private readonly AppDbContext _db;
