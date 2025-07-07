@@ -30,6 +30,11 @@ builder.Services.AddCors(options =>
     });
 });
 
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Listen(System.Net.IPAddress.Any, 80); // Ouvindo em todas as interfaces de rede
+});
+
 builder.Services
     .AddControllers()
     .AddJsonOptions(opt =>
