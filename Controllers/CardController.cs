@@ -33,9 +33,13 @@ namespace Gacha.Controllers
                 var field = parts[0];
                 var direction = parts.Length > 1 ? parts[1] : "asc";
 
-                data = direction.ToLower() == "desc"
-                    ? data.OrderByDescending(x => EF.Property<object>(x, field))
-                    : data.OrderBy(x => EF.Property<object>(x, field));
+                var prop = typeof(GetAllDto).GetProperty(field, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+                if (prop != null)
+                {
+                    data = direction.ToLower() == "desc"
+                        ? data.OrderByDescending(x => prop.GetValue(x, null))
+                        : data.OrderBy(x => prop.GetValue(x, null));
+                }
             }
 
             int totalPages = (int)Math.Ceiling((double)total / top);
