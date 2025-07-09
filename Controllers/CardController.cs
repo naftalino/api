@@ -70,5 +70,23 @@ namespace Gacha.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id) =>
             _service.Delete(id) ? Ok() : NotFound(new { error = "Card não encontrado." });
+
+        [HttpGet("cardproxy")]
+        public async Task<IActionResult> CardProxy([FromQuery] int page = 1, [FromQuery] int top = 10, [FromQuery] string? orderby = null)
+        {
+            var client = new HttpClient();
+            var url = $"https://adorabat.squareweb.app/card?page={page}&top={top}";
+
+            if (!string.IsNullOrEmpty(orderby))
+            {
+                url += $"&orderby={Uri.EscapeDataString(orderby)}";
+            }
+
+            var response = await client.GetAsync(url);
+            var content = await response.Content.ReadAsStringAsync();
+
+            return Content(content, "application/json");
+        }
+
     }
 }
