@@ -3,11 +3,9 @@ using gacha.Services;
 using pd.Services;
 using System.Text.Json;
 
-// TODO: arrumar o retorno de /api/series/subgenre com os DTOs.
-// Terminar amanha
-
 var builder = WebApplication.CreateBuilder(args);
 
+// Configuração do Entity Framework Core com SQLite e o Swagger para documentação da API
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
@@ -22,6 +20,7 @@ builder.Services.AddScoped<SubgenreService>();
 builder.Services.AddScoped<SerieService>();
 builder.Services.AddScoped<GachaDrawService>();
 
+// configurações do servidor como CORS e Kestrel
 builder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
@@ -56,12 +55,14 @@ builder.Services.AddControllers()
 
 var app = builder.Build();
 
+// Isso aqui é do banco, vai ter que criar o banco de dados se não existir
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
     db.Database.EnsureCreated();
 }
 
+// A documentação Swagger é configurada para ser exibida em ambientes de desenvolvimento e produção
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -78,4 +79,5 @@ app.UseHttpsRedirection();
 
 app.UseCors();
 app.MapControllers();
+
 app.Run();

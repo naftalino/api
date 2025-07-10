@@ -9,26 +9,45 @@ namespace gacha.Services
     public class CardService
     {
         private readonly AppDbContext _db;
+        private readonly ILogger<CardService> _logger;
 
-        public CardService(AppDbContext db)
+        public CardService(AppDbContext db, ILogger<CardService> logger)
         {
             _db = db;
+            _logger = logger;
         }
 
-        public IQueryable<GetAllDto> GetAll()
+        public (List<Card> Cards, int TotalCount) GetAll(int page = 1, int top = 10, string? orderby = null)
         {
-            return _db.Cards
-                .Include(c => c.Serie)
-                .Select(x => new GetAllDto
+            var query = _db.Cards.Include(c => c.Serie).AsQueryable();
+
+            // Ordenação dinâmica via EF.Property
+            if (!string.IsNullOrWhiteSpace(orderby))
+            {
+                var parts = orderby.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                var field = parts[0];
+                var direction = parts.Length > 1 ? parts[1].ToLower() : "asc";
+
+                try
                 {
-                    Id = x.Id,
-                    Name = x.Name,
-                    SerieName = x.Serie.Name,
-                    SerieId = x.SerieId,
-                    ThumbUrl = x.ThumbUrl,
-                    Value = x.Value,
-                    Rarity = x.Rarity
-                });
+                    query = direction == "desc"
+                        ? query.OrderByDescending(x => EF.Property<object>(x, field))
+                        : query.OrderBy(x => EF.Property<object>(x, field));
+                    _logger.LogWarning(query.ToString());
+                }catch (Exception ex)
+                {
+                    _logger.LogWarning(ex.Message);
+                }
+            }
+                
+            int total = query.Count();
+            int totalPages = (int)Math.Ceiling((double)total / top);
+            page = Math.Clamp(page, 1, totalPages);
+            int skip = (page - 1) * top;
+
+            var paged = query.Skip(skip).Take(top).ToList();
+
+            return (paged, total);
         }
 
         public CardDto? GetById(int id)

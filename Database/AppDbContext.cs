@@ -15,7 +15,7 @@ namespace gacha.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite("Data Source=gacha.db");
+            options.UseSqlite("Data Source=C:\\dev\\pd\\gacha.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

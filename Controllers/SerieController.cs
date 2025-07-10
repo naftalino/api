@@ -47,9 +47,9 @@ namespace Gacha.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll([FromQuery] string search = "")
         {
-            var series = _serieService.GetAll();
+            var series = _serieService.GetAllB(1, 10, search);
             return Ok(series);
         }
 

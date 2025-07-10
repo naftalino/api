@@ -1,9 +1,8 @@
 using gacha.Database;
 using gacha.Dto;
 using gacha.Models;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using pd.Models;
+using pd.Dto;
 
 namespace gacha.Services
 {
@@ -77,6 +76,42 @@ namespace gacha.Services
                     Subgenre = s.SubGenre != null ? s.SubGenre.Name : null
                 })
                 .ToList<object>();
+        }
+
+        public SerieResult GetAllB(int page, int pageSize, string search = "")
+        {
+            if (page < 1) page = 1;
+
+            var query = _db.Series
+                .Include(s => s.Genre)
+                .Include(s => s.SubGenre)
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                query = query.Where(s => EF.Functions.Like(s.Name, $"%{search}%") || EF.Functions.Like(s.Genre.Name, $"%{search}%") ||
+        EF.Functions.Like(s.SubGenre.Name, $"%{search}%"));
+            }
+
+            var total = query.Count();
+
+            var items = query
+                .Select(s => new SerieDto
+                {
+                    Id = s.Id,
+                    Name = s.Name,
+                    ThumbUrl = s.ThumbUrl,
+                    Type = s.SubGenreId.HasValue ? "subgenre" : "genre",
+                })
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToList();
+
+            return new SerieResult
+            {
+                TotalItems = total,
+                Items = items
+            };
         }
 
         public object GetById(int id)
