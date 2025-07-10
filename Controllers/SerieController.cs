@@ -49,6 +49,7 @@ namespace Gacha.Controllers
         [HttpGet]
         public IActionResult GetAll([FromQuery] string search = "", [FromQuery] int page = 1, [FromQuery] int pageSize = 10)
         {
+            // arrumei kk
             var series = _serieService.GetAllB(page, pageSize, search);
             return Ok(series);
         }
