@@ -1,9 +1,6 @@
 using gacha.Dto;
-using gacha.Models;
 using gacha.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace Gacha.Controllers
 {
@@ -23,15 +20,14 @@ namespace Gacha.Controllers
             _service.GetById(id) is { } c ? Ok(c) : NotFound(new { error = "Card não encontrado." });
 
         [HttpGet]
-        public IActionResult All([FromQuery] int page = 1, [FromQuery] int top = 10, [FromQuery] string? orderby = null)
+        public IActionResult All([FromQuery] int page = 1, [FromQuery] int top = 10, [FromQuery] string search = "")
         {
-            var (cards, total) = _service.GetAll(page, top, orderby);
+            var (cards, total) = _service.GetAll(page, top, search);
 
             return Ok(new
             {
-                data = cards,
-                recordsTotal = total,
-                recordsFiltered = total
+                items = cards,
+                totalItems = total
             });
         }
 
@@ -52,23 +48,5 @@ namespace Gacha.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id) =>
             _service.Delete(id) ? Ok() : NotFound(new { error = "Card não encontrado." });
-
-        [HttpGet("cardproxy")]
-        public async Task<IActionResult> CardProxy([FromQuery] int page = 1, [FromQuery] int top = 10, [FromQuery] string? orderby = null)
-        {
-            var client = new HttpClient();
-            var url = $"https://adorabat.squareweb.app/card?page={page}&top={top}";
-
-            if (!string.IsNullOrEmpty(orderby))
-            {
-                url += $"&orderby={Uri.EscapeDataString(orderby)}";
-            }
-
-            var response = await client.GetAsync(url);
-            var content = await response.Content.ReadAsStringAsync();
-
-            return Content(content, "application/json");
-        }
-
     }
 }

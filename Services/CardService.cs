@@ -17,37 +17,33 @@ namespace gacha.Services
             _logger = logger;
         }
 
-        public (List<Card> Cards, int TotalCount) GetAll(int page = 1, int top = 10, string? orderby = null)
+        public (List<Card> Cards, int TotalCount) GetAll(int page = 1, int top = 10, string search = "")
         {
-            var query = _db.Cards.Include(c => c.Serie).AsQueryable();
+            var query = _db.Cards.AsQueryable(); // ou onde tiver suas cartas
 
-            // Ordenação dinâmica via EF.Property
-            if (!string.IsNullOrWhiteSpace(orderby))
+            if (!string.IsNullOrWhiteSpace(search))
             {
-                var parts = orderby.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-                var field = parts[0];
-                var direction = parts.Length > 1 ? parts[1].ToLower() : "asc";
-
-                try
-                {
-                    query = direction == "desc"
-                        ? query.OrderByDescending(x => EF.Property<object>(x, field))
-                        : query.OrderBy(x => EF.Property<object>(x, field));
-                    _logger.LogWarning(query.ToString());
-                }catch (Exception ex)
-                {
-                    _logger.LogWarning(ex.Message);
-                }
+                query = query.Where(c => c.Name.Contains(search));
             }
-                
+
             int total = query.Count();
-            int totalPages = (int)Math.Ceiling((double)total / top);
-            page = Math.Clamp(page, 1, totalPages);
-            int skip = (page - 1) * top;
 
-            var paged = query.Skip(skip).Take(top).ToList();
+            var items = query
+                .OrderBy(c => c.Name)
+                .Skip((page - 1) * top)
+                .Take(top)
+                .Select(c => new Card
+                {
+                    Id = c.Id,
+                    Name = c.Name,
+                    Rarity = c.Rarity,
+                    SerieId = c.SerieId,
+                    Serie = c.Serie,
+                    ThumbUrl = c.ThumbUrl
+                })
+                .ToList();
 
-            return (paged, total);
+            return (items, total);
         }
 
         public CardDto? GetById(int id)

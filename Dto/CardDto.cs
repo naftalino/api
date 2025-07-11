@@ -29,7 +29,6 @@ namespace gacha.Dto
         public int? SerieId { get; set; }
     }
 
-
     public class CardDto
     {
         public int Id { get; set; }
