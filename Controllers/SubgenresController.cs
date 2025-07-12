@@ -20,7 +20,8 @@ namespace pd.Controllers
         public IActionResult GetAllSubgenres()
         {
             var list = _subgenreService.GetAllSubgenres();
-            return Ok(list);
+            int total = list.Count;
+            return Ok(new {totalItems = total, items = list});
         }
 
         [HttpGet("by-genre/{genreId}")]
