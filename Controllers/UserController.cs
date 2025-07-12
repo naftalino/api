@@ -20,10 +20,7 @@ namespace Gacha.Controllers
         public IActionResult GetAllUsers()
         {
             var users = _service.GetAll();
-            if (users == null || !users.Any())
-                return NotFound(new { error = "Nenhum usuário encontrado." });
-
-            return Ok(users);
+            return Ok(new {totalItems = users.Count, items = users});
         }
 
         [HttpGet("{id}")]

@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\dev\\pd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\controllers\\genrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:controllers\\genrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\controllers\\subgenrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:controllers\\subgenrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GenresController.cs",
-              "DocumentMoniker": "C:\\dev\\pd\\Controllers\\GenresController.cs",
-              "RelativeDocumentMoniker": "Controllers\\GenresController.cs",
-              "ToolTip": "C:\\dev\\pd\\Controllers\\GenresController.cs",
-              "RelativeToolTip": "Controllers\\GenresController.cs",
-              "ViewState": "AgIAACIAAAAAAAAAAADwvzMAAAAAAAAAAAAAAA==",
+              "Title": "SubgenresController.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Controllers\\SubgenresController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SubgenresController.cs",
+              "ToolTip": "C:\\dev\\pd\\Controllers\\SubgenresController.cs",
+              "RelativeToolTip": "Controllers\\SubgenresController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAADwvxkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T20:50:18.962Z",
+              "WhenOpened": "2025-07-12T21:31:38.224Z",
               "EditorCaption": ""
             }
           ]
