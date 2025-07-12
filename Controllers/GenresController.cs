@@ -46,7 +46,8 @@ namespace pd.Controllers
         public IActionResult GetAllGenres()
         {
             var genres = _genreService.GetGenres();
-            return Ok(genres);
+            int total = genres.Count;
+            return Ok(new {totalitems = total, items = genres});
         }
 
         [HttpPut("{id}")]
