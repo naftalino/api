@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace gacha.Services
 {
-    // nada
     public class CardService
     {
         private readonly AppDbContext _db;
@@ -17,9 +16,9 @@ namespace gacha.Services
             _logger = logger;
         }
 
-        public (List<Card> Cards, int TotalCount) GetAll(int page = 1, int top = 10, string search = "")
+        public (object Cards, int TotalCount) GetAll(int page = 1, int top = 10, string search = "")
         {
-            var query = _db.Cards.AsQueryable(); // ou onde tiver suas cartas
+            var query = _db.Cards.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(search))
             {
@@ -32,14 +31,16 @@ namespace gacha.Services
                 .OrderBy(c => c.Name)
                 .Skip((page - 1) * top)
                 .Take(top)
-                .Select(c => new Card
+                .Select(c => new ReturnAllCardsDto
                 {
                     Id = c.Id,
                     Name = c.Name,
-                    Rarity = c.Rarity,
-                    SerieId = c.SerieId,
-                    Serie = c.Serie,
-                    ThumbUrl = c.ThumbUrl
+                    ThumbUrl = c.ThumbUrl,
+                    Credits = c.Credits,
+                    Value = c.Value,
+                    PeopleOwned = c.PeopleOwned,
+                    TimesPulled = c.TimesPulled,
+                    SerieName = c.Serie.Name
                 })
                 .ToList();
 
@@ -56,7 +57,6 @@ namespace gacha.Services
                 Id = card.Id,
                 Name = card.Name,
                 ThumbUrl = card.ThumbUrl,
-                Rarity = card.Rarity,
                 Value = card.Value,
                 Serie = new SerieBasicDto
                 {
@@ -75,7 +75,6 @@ namespace gacha.Services
             var card = new Card
             {
                 Name = dto.Name,
-                Rarity = dto.Rarity,
                 ThumbUrl = dto.ThumbUrl,
                 Value = dto.Value,
                 Serie = serie
@@ -88,7 +87,6 @@ namespace gacha.Services
             {
                 Id = card.Id,
                 Name = card.Name,
-                Rarity = card.Rarity,
                 Value = card.Value,
                 ThumbUrl = card.ThumbUrl,
                 Serie = new SerieBasicDto
@@ -107,7 +105,6 @@ namespace gacha.Services
 
             if (dto.Name != null) card.Name = dto.Name;
             if (dto.ThumbUrl != null) card.ThumbUrl = dto.ThumbUrl;
-            if (dto.Rarity != null) card.Rarity = dto.Rarity;
             if (dto.Value.HasValue) card.Value = dto.Value.Value;
             if (dto.SerieId.HasValue)
             {
@@ -123,13 +120,10 @@ namespace gacha.Services
                 Id = card.Id,
                 Name = card.Name,
                 ThumbUrl = card.ThumbUrl,
-                Rarity = card.Rarity,
                 Value = card.Value,
-                Serie = new SerieBasicDto
+                Serie =
                 {
-                    Id = card.Serie.Id,
-                    Name = card.Serie.Name,
-                    ThumbUrl = card.Serie.ThumbUrl
+                    Name = card.Serie.Name
                 }
             };
         }
@@ -142,6 +136,19 @@ namespace gacha.Services
             _db.Cards.Remove(card);
             _db.SaveChanges();
             return true;
+        }
+
+        public int IncreaseTimesPulled(int CardId)
+        {
+            Card? card = _db.Cards.Find(CardId);
+            if (card == null)
+            {
+                throw new Exception("Erro. O Card não existe.");
+            }
+
+            int updated = card.TimesPulled++;
+            _db.SaveChangesAsync();
+            return updated;
         }
     }
 }

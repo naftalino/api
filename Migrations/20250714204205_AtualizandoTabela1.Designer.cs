@@ -10,14 +10,14 @@ using gacha.Database;
 namespace pd.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250627122624_UpdateCascadeDeletes")]
-    partial class UpdateCascadeDeletes
+    [Migration("20250714204205_AtualizandoTabela1")]
+    partial class AtualizandoTabela1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.6");
+            modelBuilder.HasAnnotation("ProductVersion", "9.0.7");
 
             modelBuilder.Entity("gacha.Models.Card", b =>
                 {
@@ -25,13 +25,16 @@ namespace pd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Credits")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Rarity")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
+                    b.Property<int>("PeopleOwned")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("SerieId")
                         .HasColumnType("INTEGER");
@@ -39,6 +42,9 @@ namespace pd.Migrations
                     b.Property<string>("ThumbUrl")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("TimesPulled")
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Value")
                         .HasColumnType("INTEGER");
@@ -107,19 +113,42 @@ namespace pd.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool?>("Banned")
+                    b.Property<bool>("Banned")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Coins")
+                    b.Property<int>("Coins")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("CollectionName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int?>("FavoriteCardId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsAdmin")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IsDonator")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Linktr")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Spins")
+                    b.Property<int>("Spins")
                         .HasColumnType("INTEGER");
 
+                    b.Property<int>("TradesMade")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("FavoriteCardId");
 
                     b.ToTable("Users");
                 });
@@ -204,6 +233,15 @@ namespace pd.Migrations
                     b.Navigation("Genre");
 
                     b.Navigation("SubGenre");
+                });
+
+            modelBuilder.Entity("gacha.Models.User", b =>
+                {
+                    b.HasOne("gacha.Models.Card", "FavoriteCard")
+                        .WithMany()
+                        .HasForeignKey("FavoriteCardId");
+
+                    b.Navigation("FavoriteCard");
                 });
 
             modelBuilder.Entity("pd.Models.Subgenre", b =>

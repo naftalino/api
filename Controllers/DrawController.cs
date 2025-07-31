@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using gacha.Services;
 using Microsoft.AspNetCore.Mvc;
 using pd.Services;
 
@@ -9,10 +9,12 @@ namespace pd.Controllers
     public class DrawController : ControllerBase
     {
         private readonly GachaDrawService _drawService;
+        private readonly CardService _cardService;
 
-        public DrawController(GachaDrawService drawService)
+        public DrawController(GachaDrawService drawService, CardService cardService)
         {
             _drawService = drawService;
+            _cardService = cardService;
         }
 
         [HttpGet("genre/{genreId}")]
@@ -35,6 +37,7 @@ namespace pd.Controllers
             try
             {
                 var card = _drawService.DrawCardFromSerie(serieId);
+                _cardService.IncreaseTimesPulled(card.Id);
                 return Ok(card);
             }
             catch (Exception ex)
@@ -43,5 +46,4 @@ namespace pd.Controllers
             }
         }
     }
-
 }

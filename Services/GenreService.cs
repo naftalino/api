@@ -1,10 +1,7 @@
 ﻿using gacha.Database;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using pd.Dto;
 using pd.Models;
-using System.Runtime.InteropServices.ObjectiveC;
-using static pd.Dto.GenreDto;
 
 namespace pd.Services
 {

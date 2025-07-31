@@ -47,14 +47,11 @@ public class CollectionService
             {
                 Id = collection.Card.Id,
                 Name = collection.Card.Name,
-                Rarity = collection.Card.Rarity,
                 ThumbUrl = collection.Card.ThumbUrl,
                 Value = collection.Card.Value,
-                Serie = new SerieBasicDto
+                Serie =
                 {
-                    Id = collection.Card.Serie.Id,
                     Name = collection.Card.Serie.Name,
-                    ThumbUrl = collection.Card.Serie.ThumbUrl
                 }
             }
         }).ToList();
@@ -123,7 +120,6 @@ public class CollectionService
             {
                 Id = card.Id,
                 Name = card.Name,
-                Rarity = card.Rarity,
                 ThumbUrl = card.ThumbUrl,
                 Value = card.Value,
                 Serie = new SerieBasicDto

@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\dev\\pd\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\controllers\\subgenrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:controllers\\subgenrescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\bot\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:bot\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|c:\\dev\\pd\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{489C0AF9-C9D4-A62D-7205-D992BFB475AF}|pd.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +18,36 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:679064988:0:{bf84ea66-d821-4dba-b1b1-2777d8574775}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SubgenresController.cs",
-              "DocumentMoniker": "C:\\dev\\pd\\Controllers\\SubgenresController.cs",
-              "RelativeDocumentMoniker": "Controllers\\SubgenresController.cs",
-              "ToolTip": "C:\\dev\\pd\\Controllers\\SubgenresController.cs",
-              "RelativeToolTip": "Controllers\\SubgenresController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAADwvxkAAAAAAAAAAAAAAA==",
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\dev\\pd\\Bot\\README.md",
+              "RelativeDocumentMoniker": "Bot\\README.md",
+              "ToolTip": "C:\\dev\\pd\\Bot\\README.md",
+              "RelativeToolTip": "Bot\\README.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-07-29T12:22:20.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\dev\\pd\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\dev\\pd\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-12T21:31:38.224Z",
+              "WhenOpened": "2025-07-29T11:38:14.72Z",
               "EditorCaption": ""
             }
           ]

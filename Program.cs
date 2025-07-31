@@ -1,3 +1,4 @@
+// Viva Cristo Rei!
 using gacha.Database;
 using gacha.Services;
 using pd.Services;
@@ -34,12 +35,10 @@ builder.WebHost.ConfigureKestrel(options =>
     options.Listen(System.Net.IPAddress.Any, 80); // Ouvindo em todas as interfaces de rede
 });
 
-builder.Services
-    .AddControllers()
-    .AddJsonOptions(opt =>
-    {
-        opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
-    });
+builder.Services.AddControllers().AddJsonOptions(opt =>
+{
+    opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+});
 
 
 builder.Services.AddControllers().AddJsonOptions(options =>
@@ -64,12 +63,6 @@ using (var scope = app.Services.CreateScope())
 
 // A documentação Swagger é configurada para ser exibida em ambientes de desenvolvimento e produção
 if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-if (app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();

@@ -25,7 +25,10 @@ namespace gacha.Services
                 Linktr = user.Linktr,
                 Spins = user.Spins,
                 Banned = user.Banned,
-                Coins = user.Coins
+                Coins = user.Coins,
+                IsAdmin = user.IsAdmin,
+                CollectionName = user.CollectionName,
+                IsDonator = user.IsDonator,
             };
 
             _db.Users.Add(newUser);
@@ -53,16 +56,67 @@ namespace gacha.Services
                 user.Linktr = updated.Linktr;
 
             if (updated.Spins.HasValue)
-                user.Spins = updated.Spins;
+                user.Spins = (int)updated.Spins;
 
             if (updated.Banned.HasValue)
-                user.Banned = updated.Banned;
+                user.Banned = (bool)updated.Banned;
 
             if (updated.Coins.HasValue)
-                user.Coins = updated.Coins;
+                user.Coins = (int)updated.Coins;
 
+            if (updated.IsDonator.HasValue)
+                user.IsDonator = updated.IsDonator.Value;
+
+            if (!string.IsNullOrEmpty(updated.CollectionName))
+                user.CollectionName = updated.CollectionName;
+
+            if (updated.IsAdmin.HasValue)
+                user.IsAdmin = updated.IsAdmin.Value;
+
+            if (updated.IsAdmin.HasValue)
+                user.IsAdmin = updated.IsAdmin.Value;
+
+            if (!string.IsNullOrEmpty(updated.Username))
+                user.Username = updated.Username;
+
+            if (updated.FavoriteCardId.HasValue)
+            {
+                var result = SetFavoriteCard(user.Id, (int)updated.FavoriteCardId);
+
+                if (result.Item1)
+                {
+                    user.FavoriteCardId = updated.FavoriteCardId;
+                }
+                else
+                {
+                    throw new Exception($"Usuário não pode definir a carta de ID {updated.FavoriteCardId} como favorita. Motivo: {result.Item2}");
+                }
+            }
             _db.SaveChanges();
             return user;
+        }
+
+        public (bool, string) SetFavoriteCard(long UserId, int CardId)
+        {
+            var user = _db.Users.FirstOrDefault(x => x.Id == UserId);
+            var card = _db.Cards.FirstOrDefault(x => x.Id == CardId);
+            var cardInCollection = _db.Collections.FirstOrDefault(x => x.UserId == UserId && x.CardId == CardId);
+
+            if (user == null || card == null)
+            {
+                return (false, "O usuário/carta não foram encontrados.");
+            }
+
+            if (cardInCollection == null)
+            {
+                return (false, "A carta não está na coleção do usuário.");
+            }
+
+            user.FavoriteCardId = CardId;
+
+            _db.SaveChanges();
+
+            return (true, "Carta adicionada com sucesso.");
         }
     }
 }

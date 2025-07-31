@@ -20,7 +20,7 @@ namespace Gacha.Controllers
         public IActionResult GetAllUsers()
         {
             var users = _service.GetAll();
-            return Ok(new {totalItems = users.Count, items = users});
+            return Ok(new { totalItems = users.Count, items = users });
         }
 
         [HttpGet("{id}")]
@@ -28,9 +28,16 @@ namespace Gacha.Controllers
         {
             var user = _service.Get(id);
             if (user == null)
+            {
                 return NotFound(new { error = "Usuário não encontrado." });
+            }
 
-            return Ok(user);
+            Console.WriteLine(user.FavoriteCard);
+            return Ok(new User
+            {
+                Id = user.Id,
+                FavoriteCard = user.FavoriteCard,
+            });
         }
 
         [HttpPost]
@@ -43,11 +50,22 @@ namespace Gacha.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateUser([FromBody] UpdateUserDto updatedUser, long id)
         {
-            var result = _service.Update(updatedUser, id);
-            if (result == null)
-                return NotFound(new { error = "Usuário não encontrado para atualização." });
-
-            return Ok(result);
+            try
+            {
+                var result = _service.Update(updatedUser, id);
+                if (result == null)
+                {
+                    return NotFound(new { error = "Usuário não encontrado para atualização." });
+                }
+                return Ok(updatedUser);
+            }
+            catch (Exception ex)
+            {
+                return Ok(new
+                {
+                    erro = ex.Message
+                });
+            }
         }
 
         [HttpDelete("{id}")]
